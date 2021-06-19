@@ -1,35 +1,16 @@
-# Six Letter Words API
-Hereby a file, input.txt, that contains words of varying lengths (1 to 6 characters).
+Run the jar file found in folder Runnable_jar using CLI (open explorer browse to Runnable_jar and type in cmd in the address bar. This should open up a CLI already in the correct folder) 
 
-Your objective is to show all combinations of those words that together form a word of 6 characters. That combination must also be present in input.txt  
-E.g.:
-``` 
-foobar  
-fo  
-obar
+>java -jar application-0.0.1-SNAPSHOT.jar
+
+After that launch postman and import the collection 
 ```
-should result in the output: 
+Kevin_Schuddinck_One16.postman_collection.json
 ```
-fo+obar=foobar
+
+There are 2 parameters to request:
 ```
-You can start by only supporting combinations of two words and improve the algorithm at the end of the exercise to support any combinations.
-Treat this exercise as if you were writing production code; think unit tests, SOLID, clean code and architectural healthy design. 
-Be mindful of changing requirements like a different maximum combination length, or a different source of the input data.
+    1. wordLength (parameters): maximum combination length
+    2. file (body): file that needs to be sent
+```
 
-The solution is best stored in a git repo that you communicate to us. 
-After the repo is cloned, the application should be able to run with one command / script.  
-You can create a docker, a runnable jar, a launch script, anything that works.  Just include a Readme file that guides us through the process.
-
-A good extra to do is the create an API that can be called with a request containing a list of words and then returning the output as described above.
-Or to store the result in a database (H2 for instance) to show that you can talk to a database.
-
-For instance a call with curl, or a postman collection included in you project might help us.  We are your customers and we are lazy ;-).
-
->curl --request POST 'http://localhost:8080/api/file' --data '@input.txt' --header "Content-Type: text/plain" >> output.txt
-
-Spend as many time as you want, but please communicate the amount of time you spent on the project.
-The idea is that we just can look at some code by your hand...  most people spent 1 to 2 hours tops on this exercise.
-
-If you have any questions feel free to contact us!
-
-Good luck!
+Note: the collection will already have a file input. However this file has my folder location. To get the correct file simply remove it and add yours.
