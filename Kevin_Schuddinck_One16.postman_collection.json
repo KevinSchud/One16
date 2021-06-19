@@ -21,13 +21,20 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:8080/getWords",
+					"raw": "localhost:8080/getWordsFromFile/:wordLength",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"getWords"
+						"getWordsFromFile",
+						":wordLength"
+					],
+					"variable": [
+						{
+							"key": "wordLength",
+							"value": "6"
+						}
 					]
 				}
 			},
