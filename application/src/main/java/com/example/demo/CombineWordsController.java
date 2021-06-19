@@ -25,7 +25,13 @@ public class CombineWordsController {
     public String getWordsFromFile(@PathVariable int wordLength, @RequestParam("file") MultipartFile receivedFile) {
         StringBuilder builder = new StringBuilder();
         try {
-            File file = new File("./resources/src/main/resources/" + receivedFile.getOriginalFilename());
+            // localPath
+            //File file = new File("./resources/src/main/resources/" + receivedFile.getOriginalFilename());
+
+            // path for runnable jar
+            String filePath = new File("./").getAbsolutePath();
+            File file = new File(filePath + "/resources/" + receivedFile.getOriginalFilename());
+
             if (file.createNewFile()) {
                 FileOutputStream fout = new FileOutputStream(file);
                 fout.write(receivedFile.getBytes());
