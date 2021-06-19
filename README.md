@@ -13,4 +13,6 @@ There are 2 parameters to request:
     2. file (body): file that needs to be sent
 ```
 
+In Postman you will see the result.
+
 Note: the collection will already have a file input. However this file has my folder location. To get the correct file simply remove it and add yours.
