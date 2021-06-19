@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "1295e4e1-0d14-49fd-8b10-49da232d3eb1",
+		"name": "Kevin_Schuddinck_One16",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "combineWords",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/input_postman.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/getWords",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getWords"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
