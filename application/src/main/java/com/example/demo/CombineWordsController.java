@@ -2,10 +2,7 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -24,8 +21,8 @@ public class CombineWordsController {
     @Autowired
     private CombineWordsService combineWordsService;
 
-    @RequestMapping(method = RequestMethod.POST, value = "/getWords", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String getWordsFromFile(@RequestParam("file") MultipartFile receivedFile) {
+    @RequestMapping(method = RequestMethod.POST, value = "/getWordsFromFile/{wordLength}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String getWordsFromFile(@PathVariable int wordLength, @RequestParam("file") MultipartFile receivedFile) {
         StringBuilder builder = new StringBuilder();
         try {
             File file = new File("./resources/src/main/resources/" + receivedFile.getOriginalFilename());
@@ -34,7 +31,7 @@ public class CombineWordsController {
                 fout.write(receivedFile.getBytes());
                 fout.close();
 
-                List<String> output = combineWordsService.combineWordsTest(file);
+                List<String> output = combineWordsService.combineWordsPresentInFile(file, wordLength);
 
                 output.forEach(s -> builder.append(s).append("\n"));
 

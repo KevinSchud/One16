@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 @Service
 public class CombineWordsService {
 
-    public List<String> combineWordsTest(File file) {
-        List<String> parts, sixLetterWords;
+    public List<String> combineWordsPresentInFile(File file, int wordLength) {
+        List<String> parts, fullWords;
 
         List<String> results = new ArrayList<>();
         List<String> words = getWordsOutOfFile(file);
@@ -26,18 +26,18 @@ public class CombineWordsService {
                 .distinct()
                 .collect(Collectors.toList());
 
-        sixLetterWords = words.stream()
-                .filter(s -> s.length() == 6)
+        fullWords = words.stream()
+                .filter(s -> s.length() == wordLength)
                 .collect(Collectors.toList());
         parts = words.stream()
-                .filter(s -> s.length() != 6)
+                .filter(s -> s.length() != wordLength)
                 .collect(Collectors.toList());
 
         for (String part : parts) {
             int partLength = part.length();
-            List<String> common = new ArrayList<>(sixLetterWords);
+            List<String> common = new ArrayList<>(fullWords);
             List<String> combinationsToCheck = parts.stream()
-                    .filter(s -> s.length() == (6 - partLength))
+                    .filter(s -> s.length() == (wordLength - partLength))
                     .map(s -> part + s)
                     .collect(Collectors.toList());
             common.retainAll(combinationsToCheck);
